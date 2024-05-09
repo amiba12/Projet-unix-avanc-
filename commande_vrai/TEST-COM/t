@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Vérifie s'il y a au moins deux fichiers en argument
+if [ "$#" -lt 2 ]; then
+    echo "Erreur : Vous devez spécifier au moins deux fichiers."
+    exit 1
+fi
+
+# Concaténation de tous les fichiers dans le premier fichier en argument
+cat "$@" > "$1"
+
+# Affichage du contenu concaténé dans l'ordre inverse
+echo "Contenu des fichiers concaténés dans l'ordre inverse :"
+tac "$1"

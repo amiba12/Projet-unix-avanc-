@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Affichage du menu
+afficher_menu() {
+    echo "==============BIENVENUE DANS MES COMMANDES============"
+    echo "1. Commande 1"
+    echo "2. Commande 2"
+    echo "3. Commande 3"
+    echo "4. Commande 4"
+    echo "5. Commande 5"
+    echo "6. Commande 6"
+    echo "7. Quitter"
+    echo "========CHOISISSEZ UNE OPTION=======================: "
+}
+
+# Boucle principale pour le menu
+while true; do
+    afficher_menu
+    read choix
+
+    case $choix in
+        1)
+            echo "Option choisie : Commande 1"
+            echo "Entrez le/les répertoires : "
+            read -a args
+            echo "==========Exécution.=========="
+            ./commande1.sh "${args[@]}"
+            echo "==========Commande 1 exécutée avec succès.========"
+            ;;
+        2)
+            echo "Option choisie : Commande 2"
+            echo "Entrez les arguments (jour mois année) : "
+            read jour mois annee
+            echo "===========Exécution.==========="
+            ./commande2.sh "$jour" "$mois" "$annee"
+            echo "==========Commande 2 exécutée avec succès.========="
+            ;;
+        3)
+            echo "Option choisie : Commande 3"
+            ./commande3.sh
+            echo "==========Commande 3 exécutée avec succès.========="
+            ;;
+            
+        4)
+            echo "Option choisie : Commande 4"
+            read -p "Entrez au moins deux fichiers : " arguments
+            echo "==========Exécution..==========="
+            ./commande4.sh $arguments
+            echo "==========Commande 4 exécutée avec succès.=========="
+            ;;
+        5)
+            echo "Option choisie : Commande 5"
+            read -p "Entrez le/les repertoires : " arguments
+             echo "==========verifier les repertoires sauves et archives pour voir le resultat...==========="
+            ./commande5.sh $arguments
+            echo "==========Commande 5 exécutée avec succès.========="
+            ;;
+        6)
+            echo "Option choisie : Commande 6"
+            read -p "Entrez au moins une chaine et un fichier : " arguments
+             echo "==========Exécution...==========="
+            ./commande6.sh $arguments
+            echo "==========Commande 6 exécutée avec succès.=========="
+            ;;
+            
+        7)
+            echo "Au revoir !"
+            exit
+            ;;
+        *)
+            echo "Option invalide. Veuillez choisir une option valide."
+            ;;
+    esac
+    read -p "APPUYER ENTRER POUR CONTINUER"
+    clear
+done
